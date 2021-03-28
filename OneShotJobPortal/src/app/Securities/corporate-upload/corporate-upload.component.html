@@ -1,0 +1,16 @@
+<div class="container-fluid">
+    <div class="row main-content text-center">
+        <div class="col-md-4 text-center ml-10">
+            <input type="file" #file placeholder="Choose file" (change)="uploadPhoto(file.files)" style="display:none;">
+            <button type="button" class="btn btn-success" (click)="file.click()">Upload your
+                Logo / Image</button>
+            <!-- Divider Text -->
+            <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+                <div class="border-bottom w-100 ml-5"></div>
+            </div>
+            <button class="btn btn-primary" (click)="skipStep()">
+                <span class="font-weight-bold">Skip this step</span>
+            </button>
+        </div>
+    </div>
+</div>

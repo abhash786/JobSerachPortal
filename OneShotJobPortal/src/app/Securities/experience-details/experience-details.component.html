@@ -1,0 +1,157 @@
+<div class="row">
+    <div class="col-md-12 col-lg-12 ml-auto">
+        <h3 class="text-center">Experience Details</h3>
+    </div>
+
+    <!-- primary skill -->
+    <div class="input-group col-lg-6 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-certificate"></i>
+            </span>
+        </div>
+        <select class="form-control bg-white border-md   pl-3" aria-label="Default select"
+            [(ngModel)]="currectExperience.primarySkill" (change)="primarySkillChanged()">
+            <option [value]=0>Select primary skill name</option>
+            <option *ngFor="let skill of cache.SkillsSets" [value]="skill.skillSetId">
+                {{skill.skillSetName}}
+            </option>
+        </select>
+    </div>
+
+    <!-- CertificateDegreeName -->
+    <div class="input-group col-lg-12 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-certificate"></i>
+            </span>
+        </div>
+        <input type="text" placeholder="Job Title" [(ngModel)]="currectExperience.jobTitle"
+            class="form-control bg-white border-md   pl-3">
+    </div>
+
+    <!-- empName -->
+    <div class="input-group col-lg-6 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-building"></i>
+            </span>
+        </div>
+        <input type="text" placeholder="Company Name " [(ngModel)]="currectExperience.empName"
+            class="form-control bg-white border-md   pl-3">
+    </div>
+
+    <!-- isCurrentJob -->
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" [(ngModel)]="currectExperience.isCurrentJob">
+        <label class="form-check-label">Current Company</label>
+    </div>
+
+    <!-- jobProjectDescription -->
+    <div class="input-group col-lg-12 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fas fa-info"></i>
+            </span>
+        </div>
+        <textarea rows="0" placeholder="Project Description..." [(ngModel)]="currectExperience.jobProjectDesc"
+            class="form-control bg-white   border-md"></textarea>
+    </div>
+
+    <!-- jobCity -->
+    <div class="input-group col-lg-6 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-map-marker text-muted"></i>
+            </span>
+        </div>
+        <input type="text" name="firstname" placeholder="Job Location City" [(ngModel)]="currectExperience.jobCity"
+            class="form-control bg-white   border-md">
+    </div>
+
+    <!-- jobState -->
+    <div class="input-group col-lg-6 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-map-marker text-muted"></i>
+            </span>
+        </div>
+        <input type="text" placeholder="State" [(ngModel)]="currectExperience.jobState"
+            class="form-control bg-white   border-md">
+    </div>
+
+    <!-- Start Date -->
+    <div class="input-group col-lg-6 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-calendar-alt"></i>
+            </span>
+        </div>
+        <input type="text" placeholder="Start Date" onfocus="(this.type='date')"
+            [(ngModel)]="currectExperience.joiningDate" onblur="(this.type='text')"
+            class="form-control bg-white   border-md">
+    </div>
+
+    <!-- End date -->
+    <div class="input-group col-lg-6 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-calendar-alt"></i>
+            </span>
+        </div>
+        <input id="dob" type="text" name="dob" placeholder="End Date" onfocus="(this.type='date')"
+            [(ngModel)]="currectExperience.leavingDate" onblur="(this.type='text')"
+            class="form-control bg-white   border-md">
+    </div>
+    <!-- Add Button -->
+    <div class="form-group col-lg-6 mx-auto mb-0">
+        <button class="btn btn-primary btn-block py-2" (click)="addExperience()">
+            <span class="font-weight-bold">Add Experience</span>
+        </button>
+    </div>
+
+
+    <!-- Divider Text -->
+    <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+        <div class="border-bottom w-100 ml-5"></div>
+        <span class="px-2 small text-muted font-weight-bold text-muted"></span>
+        <div class="border-bottom w-100 mr-5"></div>
+    </div>
+
+    <div class="container mt-4">
+        <table class="table">
+            <tr>
+                <th class="text-center">Title</th>
+                <th class="text-center">Skill</th>
+                <th class="text-center">Start Date</th>
+                <th class="text-center">End Date</th>
+                <th class="text-center">Company Name</th>
+                <th class="text-center">City</th>
+                <th class="text-center">State</th>
+                <th class="text-center">Level</th>
+                <th class="text-center">Current Job</th>
+                <th class="text-center">Discription</th>
+                <th class="text-center">Delete</th>
+            </tr>
+            <tr *ngFor="let d of experienceData; let i = index">
+                <td class="text-center">{{ d.jobTitle }}</td>
+                <td class="text-center">{{ getSkillNameName(d.primarySkill) }}</td>
+                <td class="text-center">{{ d.joiningDate }}</td>
+                <td class="text-center">{{ d.leavingDate }}</td>
+                <td class="text-center">{{ d.empName }}</td>
+                <td class="text-center">{{ d.jobCity }}</td>
+                <td class="text-center">{{ d.jobState }}</td>
+                <td class="text-center">{{ skillLevel[i].skillLevel }}</td>
+                <td class="text-center">{{ d.isCurrentJob }}</td>
+                <td class="text-center">{{ d.jobProjectDesc }}</td>
+                <td class="text-center">
+                    <button class="btn btn-primary btn-block py-2" (click)="deleteExperience(d,i)">
+                        <span class="font-weight-bold">Delete</span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+</div>

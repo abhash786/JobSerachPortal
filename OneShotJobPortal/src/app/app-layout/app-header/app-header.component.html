@@ -1,0 +1,31 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top site-header">
+
+
+    <div class="container-fluid">
+        <!-- <a class="navbar-brand" style="color: white;">R-Manjusha</a> -->
+        <img src="assets/images/Company_logo.jpg" class="navbar-toggler-icon" alt="logo" />
+        <a class="navbar-brand ml-2" style="color: white;">R-Manjusha</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            style="background-image: 'assets/images/Company_logo.jpg';" aria-controls="navbarResponsive"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="companyprofile" routerLinkActive="active"
+                        *ngIf="cache.isCorporate && cache.isAuthenticated">Home</a>
+                    <a class="nav-link" routerLink="candidateprofile" routerLinkActive="active"
+                        *ngIf="!cache.isCorporate && cache.isAuthenticated" style="cursor: pointer;">Home</a>
+                </li>
+                <li class="nav-item">
+                    <!-- <a class="nav-link" routerLink="login" routerLinkActive="active"
+                        *ngIf="!cache.isAuthenticated">Login</a> -->
+                    <a class="nav-link" routerLinkActive="active" *ngIf="cache.isAuthenticated" style="cursor: pointer;"
+                        (click)="logout()">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

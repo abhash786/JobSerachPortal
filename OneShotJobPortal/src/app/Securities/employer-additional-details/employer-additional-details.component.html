@@ -1,0 +1,132 @@
+<div class="container">
+    <div class="row py-5 mt-4 align-items-center main-content ml-2">
+        <!-- For Demo Purpose -->
+        <div class="col-md-6 pr-lg-12 mb-6 mb-md-0">
+            <h1>Registering as Corporate</h1>
+            <br />
+            <h4>We just need few more details...</h4>
+        </div>
+        <!-- Divider Text -->
+        <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+            <div class="border-bottom w-100 ml-5"></div>
+        </div>
+        <!-- Registeration Form -->
+        <div class="row  m-2">
+            <!-- Company Name -->
+            <div class="input-group col-lg-6 mb-4">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-white px-4 border-md border-right-0">
+                        <i class="fa fa-phone-square text-muted"></i>
+                    </span>
+                </div>
+                <input id="cname" type="text" placeholder="Alternate contact number"
+                    [(ngModel)]="employerInfo.empContactPersonAltNumber" class="form-control bg-white   border-md">
+            </div>
+
+
+
+            <!-- emp facebook -->
+            <div class="input-group col-lg-6 mb-4">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-white px-4 border-md border-right-0">
+                        <i class="fab fa-facebook text-muted"></i>
+                    </span>
+                </div>
+                <input id="email" type="text" name="email" placeholder="facebook" [(ngModel)]="employerInfo.fbId"
+                    class="form-control bg-white   border-md">
+            </div>
+
+            <!-- twitter -->
+            <div class="input-group col-lg-6 mb-4">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-white px-4 border-md border-right-0">
+                        <i class="fab fa-twitter text-muted"></i>
+                    </span>
+                </div>
+                <input id="email" type="text" name="email" placeholder="twitter" [(ngModel)]="employerInfo.twtrId"
+                    class="form-control bg-white   border-md">
+            </div>
+
+            <!-- emp instagram -->
+            <div class="input-group col-lg-6 mb-4">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-white px-4 border-md border-right-0">
+                        <i class="fab fa-instagram text-muted"></i>
+                    </span>
+                </div>
+                <input id="email" type="text" name="email" placeholder="instagram" [(ngModel)]="employerInfo.instaId"
+                    class="form-control bg-white   border-md">
+            </div>
+
+            <!-- emp linkedIn -->
+            <div class="input-group col-lg-6 mb-4">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-white px-4 border-md border-right-0">
+                        <i class="fab fa-linkedin text-muted"></i>
+                    </span>
+                </div>
+                <input id="email" type="text" name="email" placeholder="linkedin" [(ngModel)]="employerInfo.lkdnId"
+                    class="form-control bg-white   border-md">
+            </div>
+
+            <!-- emp website -->
+            <div class="input-group col-lg-6 mb-4">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-white px-4 border-md border-right-0">
+                        <i class="fab fa-skype text-muted"></i>
+                    </span>
+                </div>
+                <input id="email" type="text" name="email" placeholder="Company Website"
+                    [(ngModel)]="employerInfo.empWebsite" class="form-control bg-white   border-md">
+            </div>
+
+            <!-- emp about us -->
+            <div class="input-group col-lg-12 mb-4">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-white px-4 border-md border-right-0">
+                        <i class="fas fa-info"></i>
+                    </span>
+                </div>
+                <textarea rows="0" placeholder="Tell us something about your company"
+                    [(ngModel)]="employerInfo.empAboutUs" class="form-control bg-white   border-md"></textarea>
+            </div>
+            <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+                <div class="col-md-4 text-center ml-10">
+                    <input type="file" #file placeholder="Choose file" (change)="uploadPhoto(file.files)"
+                        style="display:none;">
+                    <button type="button" class="btn btn-success" (click)="file.click()">Upload Company
+                        Logo / Image</button>
+                </div>
+            </div>
+            <!-- Divider Text -->
+            <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+                <div class="border-bottom w-100 ml-5"></div>
+                <div class="border-bottom w-100 mr-5"></div>
+            </div>
+
+
+
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group col-lg-12 mx-auto mb-0">
+            <button class="btn btn-primary btn-block py-2" (click)="onSubmit()">
+                <span class="font-weight-bold">Update Account Additional Info</span>
+            </button>
+        </div>
+
+        <!-- Divider Text -->
+        <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+            <div class="border-bottom w-100 ml-5"></div>
+            <span class="px-2 small text-muted font-weight-bold text-muted">OR</span>
+            <div class="border-bottom w-100 mr-5"></div>
+        </div>
+
+        <!-- Already Registered -->
+        <div class="text-center w-100">
+            <p class="text-muted font-weight-bold">Already Registered? <a routerLink="/login"
+                    class="text-primary ml-2">Login</a></p>
+        </div>
+
+    </div>
+</div>

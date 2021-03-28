@@ -1,0 +1,41 @@
+import { EducationDetail } from "./EducationDetail";
+import { ExprerienceDetail } from "./ExperienceDetail";
+import { SeekersSkillsSet } from "./SeekersSkillsSet";
+
+export interface SeekerProfile {
+    skrId: number;
+    skrCode: string;
+    skrTypeId: number | null;
+    skrProfileCreateDate: string;
+    iValueRegDate: string | null;
+    iCatalystRegDate: string | null;
+    email: string;
+    password: string;
+    dob: string;
+    gender: string;
+    skrProfileVisibility: boolean;
+    contactNum: number;
+    altContactNum: number | null;
+    seekerImage: string;
+    aadhaar: number;
+    spokenLanguage: string;
+    commAdd: string;
+    permAdd: string;
+    jobLocationPref: number;
+    firstName: string;
+    middleName: string;
+    lastName: string;
+    income: number | null;
+    isYearly: boolean | null;
+    currency: string;
+    lastModifiedDate: string;
+    resumeCv: string;
+    fbId: string;
+    instaId: string;
+    twtrId: string;
+    lkdnId: string;
+    cvHeadLine: string;
+    educationDetailSkrs: EducationDetail[];
+    experienceDetailSkrs: ExprerienceDetail[];
+    seekersSkillsSetSkrs: SeekersSkillsSet[];
+}

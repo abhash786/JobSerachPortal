@@ -1,0 +1,144 @@
+<div class="row">
+    <div class="col-md-12 col-lg-12 ml-auto">
+        <h3 class="text-center">Education Details</h3>
+    </div>
+
+    <!-- CertificateDegreeName -->
+    <div class="input-group col-lg-6 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-certificate"></i>
+            </span>
+        </div>
+        <select class="form-control bg-white   border-md" aria-label="Default select"
+            [(ngModel)]="currectEducation.courseId">
+            <option [value]=0>Select a course name</option>
+            <option *ngFor="let course of cache.CourseMasters" [value]="course.courseId">
+                {{course.courseFullName}}
+            </option>
+        </select>
+    </div>
+
+    <!-- University  Name -->
+    <div class="input-group col-lg-12 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-building"></i>
+            </span>
+        </div>
+        <input type="text" placeholder="University Name " [(ngModel)]="currectEducation.universityBoardName"
+            class="form-control bg-white border-md   pl-3">
+    </div>
+
+    <!-- Institute  Name -->
+    <div class="input-group col-lg-12 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-building"></i>
+            </span>
+        </div>
+        <input type="text" placeholder="Institute Name " [(ngModel)]="currectEducation.instituteName"
+            class="form-control bg-white border-md   pl-3">
+    </div>
+
+    <!-- Major Subject / department -->
+    <div class="input-group col-lg-6 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-book text-muted"></i>
+            </span>
+        </div>
+        <input type="text" name="firstname" placeholder="Major Subject / department"
+            [(ngModel)]="currectEducation.courseSpecialization" class="form-control bg-white   border-md">
+    </div>
+
+    <!-- CGPA or Percentage -->
+    <div class="input-group col-lg-6 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-percent text-muted"></i>
+            </span>
+        </div>
+        <input type="text" placeholder="CGPA or Percentage" [(ngModel)]="currectEducation.percentageOrCgpa"
+            class="form-control bg-white   border-md">
+    </div>
+
+    <!-- Start Date -->
+    <div class="input-group col-lg-6 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-calendar-alt"></i>
+            </span>
+        </div>
+        <input type="text" placeholder="Start Date" onfocus="(this.type='date')"
+            [(ngModel)]="currectEducation.courseStartDate" onblur="(this.type='text')"
+            class="form-control bg-white   border-md">
+    </div>
+
+    <!-- End date -->
+    <div class="input-group col-lg-6 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-calendar-alt"></i>
+            </span>
+        </div>
+        <input id="dob" type="text" name="dob" placeholder="End Date" onfocus="(this.type='date')"
+            [(ngModel)]="currectEducation.courseCompletionDate" onblur="(this.type='text')"
+            class="form-control bg-white   border-md">
+    </div>
+
+    <!-- Add Button -->
+    <div class="form-group col-lg-6 mx-auto mb-0">
+        <button class="btn btn-primary btn-block py-2" (click)="addEducation()">
+            <span class="font-weight-bold">Add Education</span>
+        </button>
+    </div>
+
+    <!-- Divider Text -->
+    <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+        <div class="border-bottom w-100 ml-5"></div>
+        <span class="px-2 small text-muted font-weight-bold text-muted"></span>
+        <div class="border-bottom w-100 mr-5"></div>
+    </div>
+
+    <div class="container" style="margin-left: 0;">
+        <table class="table">
+            <tr>
+                <th>Course Name</th>
+                <th>Specialization</th>
+                <th>Institute Name</th>
+                <th> University Name</th>
+                <th>Start Date</th>
+                <th>Completion Date</th>
+                <th>Percentage/Cgpa</th>
+                <th>Delete</th>
+            </tr>
+            <tr *ngFor="let d of educationData">
+                <td class="text-center">{{ getCourseName(d.courseId) }}</td>
+                <td class="text-center">{{ d.courseSpecialization }}</td>
+                <td class="text-center">{{ d.instituteName }}</td>
+                <td class="text-center">{{ d.universityBoardName }}</td>
+                <td class="text-center">{{ d.courseStartDate }}</td>
+                <td class="text-center">{{ d.courseCompletionDate }}</td>
+                <td class="text-center">{{ d.percentageOrCgpa }}</td>
+                <td class="text-center">
+                    <button class="btn btn-primary btn-block py-2" (click)="deleteEducation(d)">
+                        <span class="font-weight-bold">Delete</span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="col-md-12 col-lg-12 ml-auto">
+
+        <!-- Submit Button -->
+        <div class="form-group col-lg-6 mx-auto mb-0">
+            <button class="btn btn-primary btn-block py-2" (click)="onSubmit()">
+                <span class="font-weight-bold">Update</span>
+            </button>
+        </div>
+
+
+    </div>
+</div>

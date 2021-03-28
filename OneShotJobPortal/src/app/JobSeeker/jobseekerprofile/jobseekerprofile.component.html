@@ -1,0 +1,95 @@
+<table>
+    <tr>
+        <td>
+            <app-seeker-left-menu (viewChanged)="NavigateView($event)"></app-seeker-left-menu>
+        </td>
+
+        <td>
+            <main class="container" id="main">
+                <!-- Navigation -->
+
+
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark site-header mb-2 d-lg-none" *ngIf="displayMenu">
+
+
+                    <div class="container-fluid">
+                        <!-- <a class="navbar-brand" style="color: white;">R-Manjusha</a> -->
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarResponsive1" style="background-image: 'assets/images/Company_logo.jpg';"
+                            aria-controls="navbarResponsive1" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarResponsive1">
+                            <ul class="navbar-nav mr-auto">
+                                <li><a class="nav-link" (click)="NavigateView('isHome')"><i class="fab fa-user"></i>
+                                        <span>Home</span></a></li>
+                                <li><a class="nav-link" (click)="NavigateView('isSearchCompany')"><i
+                                            class="fab fa-user"></i>
+                                        <span>Search Company</span></a></li>
+                                <li><a class="nav-link" (click)="NavigateView('isSearchJob')"><i
+                                            class="fab fa-user"></i>
+                                        <span>Search Job</span></a></li>
+                                <li><a class="nav-link" (click)="NavigateView('isJobHistory')"><i
+                                            class="fab fa-user"></i>
+                                        <span>Job History</span></a></li>
+
+                                <!-- Update menu -->
+                                <li><a class="nav-link" href="#collapseExample" data-toggle="collapse" role="button"
+                                        aria-expanded="false" aria-controls="collapseExample"><i
+                                            class="fab fa-user"></i>
+                                        <span>Update</span></a></li>
+
+                                <div class="collapse" id="collapseExample">
+                                    <li><a class="nav-link" (click)="NavigateView('isUpdateProfile')"><i
+                                                class="fab fa-user"></i>
+                                            <span> - Profile info</span></a></li>
+                                    <li><a class="nav-link" (click)="NavigateView('isUpdateExp')"><i
+                                                class="fab fa-user"></i>
+                                            <span> - Experience</span></a></li>
+                                    <li><a class="nav-link" (click)="NavigateView('isUpdateEdu')"><i
+                                                class="fab fa-user"></i>
+                                            <span> - Education</span></a></li>
+                                    <li><a class="nav-link" (click)="NavigateView('isUpload')"><i
+                                                class="fab fa-user"></i>
+                                            <span> - Skills Level</span></a></li>
+
+                                    <li>
+                                        <input type="file" #file placeholder="Choose file"
+                                            (change)="upload(file.files, true)" style="display:none;">
+                                        <a class="nav-link" *ngIf="displayMenu" (click)="file.click()"><i
+                                                class="fab fa-user"></i>
+                                            <span> - Upload new
+                                                resume</span></a>
+                                    </li>
+
+                                    <li>
+                                        <input type="file" #file1 placeholder="Choose file"
+                                            (change)="upload(file1.files,false)" style="display:none;">
+                                        <a class="nav-link" *ngIf="displayMenu" (click)="file1.click()"><i
+                                                class="fab fa-user"></i>
+                                            <span> - Upload new
+                                                Photo</span></a>
+                                    </li>
+                                </div>
+
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+
+                <app-seeker-description *ngIf="isHome"></app-seeker-description>
+                <app-update-candidate-profile *ngIf="isUpdateProfile"></app-update-candidate-profile>
+                <app-search-job *ngIf="isSearchJob" (viewJobEvt)="viewJob($event)"></app-search-job>
+                <app-search-company *ngIf="isSearchCompany"></app-search-company>
+                <app-job-application-history *ngIf="isJobHistory"></app-job-application-history>
+                <app-update-education style="margin-left: 300px;" *ngIf="isUpdateEdu">
+                </app-update-education>
+                <app-update-experience style="margin-left: 300px;" *ngIf="isUpdateExp"></app-update-experience>
+                <app-update-skill-sets style="margin-left: 0;" *ngIf="isUpload" isUpdating="true">
+                </app-update-skill-sets>
+                <app-seekerviewjob *ngIf="isViewJob"></app-seekerviewjob>
+            </main><!-- End #main -->
+        </td>
+    </tr>
+</table>

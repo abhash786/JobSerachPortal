@@ -1,0 +1,7 @@
+<h5 class="card-text text-truncate">Your Job Applications history</h5>
+<div style="height: calc(100vh - 100px); width: calc(100vw - 350px); overflow:scroll;">
+    <ag-grid-angular style="width: 100%; height: 100%;overflow: 'hidden' " class="ag-theme-balham"
+        [defaultColDef]="defaultColDef" [columnDefs]="columnDefs" [rowData]="rowData" (gridReady)="onGridReady($event)"
+        [frameworkComponents]="frameworkComponents">
+    </ag-grid-angular>
+</div>

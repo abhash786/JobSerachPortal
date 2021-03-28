@@ -1,0 +1,196 @@
+<div class="container">
+    <div class="row py-3 mt-4 align-items-center main-content">
+        <div class="col-md-12 col-lg-12 ml-auto">
+            <h2 class="text-center">We need few more details before you start job hunting...</h2>
+        </div>
+
+        <!-- Divider Text -->
+        <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+            <div class="border-bottom w-100 ml-5"></div>
+            <span class="px-2 small text-muted font-weight-bold text-muted"></span>
+            <div class="border-bottom w-100 mr-5"></div>
+        </div>
+
+        <!-- profile visibility -->
+        <div class="input-group col-lg-12 mb-4 ml-4">
+            <input type="checkbox" class="form-check-input" [(ngModel)]="seekerInfo.skrProfileVisibility">
+            <label class="form-check-label">Make profile visiable</label>
+        </div>
+
+        <!-- persoal Details -->
+        <!-- alternate Phone Number -->
+        <div class="input-group col-lg-6 mb-4">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                    <i class="fa fa-phone-square text-muted"></i>
+                </span>
+            </div>
+            <input type="tel" placeholder="alternate Phone Number" [(ngModel)]="seekerInfo.altContactNum"
+                class="form-control bg-white border-md   pl-3">
+        </div>
+
+        <!-- Spoken Language -->
+        <div class="input-group col-lg-6 mb-4">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                    <i class="fa fa-language text-muted"></i>
+                </span>
+            </div>
+            <input type="text" placeholder="Spoken Languages... Comma separated" [(ngModel)]="seekerInfo.spokenLanguage"
+                class="form-control bg-white border-md   pl-3">
+        </div>
+
+
+
+
+
+        <!-- Permanent Address -->
+        <div class="input-group col-lg-12 mb-4">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                    <i class="fa fa-address-book text-muted"></i>
+                </span>
+            </div>
+            <input type="text" name="phone" placeholder="Permanent Address" [(ngModel)]="seekerInfo.permAdd"
+                class="form-control bg-white border-md   pl-3">
+        </div>
+
+
+
+        <!-- income -->
+        <div class="input-group col-lg-6 mb-4">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                    <i class="fas fa-rupee-sign text-muted"></i>
+                </span>
+            </div>
+            <input type="number" placeholder="income" [(ngModel)]="seekerInfo.income"
+                class="form-control bg-white border-md   pl-3">
+        </div>
+
+        <!-- is Yearly -->
+        <div class="form-group col-lg-6 mx-auto d-flex align-items-left">
+            <input type="checkbox" class="form-check-input" [(ngModel)]="seekerInfo.isYearly">
+            <label class="form-check-label">Yearly</label>
+        </div>
+
+
+        <!-- Divider Text -->
+        <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+            <div class="border-bottom w-100 ml-5"></div>
+            <span class="px-2 small text-muted font-weight-bold text-muted"></span>
+            <div class="border-bottom w-100 mr-5"></div>
+        </div>
+
+        <!-- seeker about us -->
+        <div class="form-group col-lg-12 mx-auto d-flex align-items-left">
+            <label class="form-check-label">Resume Tag Line</label>
+        </div>
+
+        <div class="input-group col-lg-12 mb-4">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                    <i class="fas fa-info text-muted"></i>
+                </span>
+            </div>
+            <textarea rows="0" placeholder="Tell us something about you" [(ngModel)]="seekerInfo.cvHeadLine"
+                class="form-control bg-white   border-md"></textarea>
+        </div>
+
+        <!-- Divider Text -->
+        <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+            <div class="border-bottom w-100 ml-5"></div>
+            <span class="px-2 small text-muted font-weight-bold text-muted"></span>
+            <div class="border-bottom w-100 mr-5"></div>
+        </div>
+        <!-- social media-->
+
+        <div class="form-group col-lg-12 mx-auto d-flex align-items-left">
+            <label class="form-check-label">Social Media</label>
+        </div>
+
+        <!-- emp facebook -->
+        <div class="input-group col-lg-6 mb-4">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                    <i class="fab fa-facebook text-muted"></i>
+                </span>
+            </div>
+            <input id="email" type="text" name="email" placeholder="facebook" [(ngModel)]="seekerInfo.fbId"
+                class="form-control bg-white   border-md">
+        </div>
+
+        <!-- twitter -->
+        <div class="input-group col-lg-6 mb-4">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                    <i class="fab fa-twitter text-muted"></i>
+                </span>
+            </div>
+            <input id="email" type="text" name="email" placeholder="twitter" [(ngModel)]="seekerInfo.twtrId"
+                class="form-control bg-white   border-md">
+        </div>
+
+        <!-- emp instagram -->
+        <div class="input-group col-lg-6 mb-4">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                    <i class="fab fa-instagram text-muted"></i>
+                </span>
+            </div>
+            <input id="email" type="text" name="email" placeholder="instagram" [(ngModel)]="seekerInfo.instaId"
+                class="form-control bg-white   border-md">
+        </div>
+
+        <!-- emp linkedIn -->
+        <div class="input-group col-lg-6 mb-4">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                    <i class="fab fa-linkedin text-muted"></i>
+                </span>
+            </div>
+            <input id="email" type="text" name="email" placeholder="linkedin" [(ngModel)]="seekerInfo.lkdnId"
+                class="form-control bg-white   border-md">
+        </div>
+
+        <!-- Divider Text -->
+        <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+            <div class="border-bottom w-100 ml-5"></div>
+            <span class="px-2 small text-muted font-weight-bold text-muted"></span>
+            <div class="border-bottom w-100 mr-5"></div>
+        </div>
+
+
+        <div class="col-md-12 col-lg-12 ml-auto">
+
+            <!-- For Education details -->
+            <app-education-details></app-education-details>
+
+
+            <!-- Divider Text -->
+            <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+                <div class="border-bottom w-100 ml-5"></div>
+                <span class="px-2 small text-muted font-weight-bold text-muted"></span>
+                <div class="border-bottom w-100 mr-5"></div>
+            </div>
+
+            <!-- For experience details -->
+            <app-experience-details></app-experience-details>
+
+            <!-- Divider Text -->
+            <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+                <div class="border-bottom w-100 ml-5"></div>
+                <span class="px-2 small text-muted font-weight-bold text-muted"></span>
+                <div class="border-bottom w-100 mr-5"></div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group col-lg-6 mx-auto mb-0">
+                <button class="btn btn-primary btn-block py-2" (click)="onSubmit()">
+                    <span class="font-weight-bold">Submit</span>
+                </button>
+            </div>
+
+
+        </div>
+    </div>

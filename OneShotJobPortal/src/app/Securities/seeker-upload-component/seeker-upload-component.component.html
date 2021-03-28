@@ -1,0 +1,103 @@
+<div class="container-fluid mb-4 w-100">
+    <div class="row main-content text-center">
+        <h2 class="row col-lg-12 text-center ml-2">Please provide us your skillset level</h2>
+        <div class="row col-lg-12 text-center mt-4">
+            <div class="input-group col-lg-4 mb-4">
+
+                <select class="form-control bg-white border-md   pl-3" aria-label="Default select"
+                    [(ngModel)]="currentSkillSet.skillSetId">
+                    <option [value]=0>Select primary skill name</option>
+                    <option *ngFor="let skill of cache.SkillsSets" [value]="skill.skillSetId">
+                        {{skill.skillSetName}}
+                    </option>
+                </select>
+            </div>
+
+            <!-- secondary skill -->
+            <!-- <div class="input-group col-lg-4 mb-4">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                    <i class="fa fa-certificate"></i>
+                </span>
+            </div>
+            <select class="form-select" aria-label="Default select" disabled>
+                <option>
+                    {{primarySkillChanged()}}
+                </option>
+            </select>
+        </div> -->
+
+            <!-- skill level -->
+            <div class="input-group col-lg-6 mb-4">
+
+                <select class="form-control bg-white border-md   pl-3" aria-label="Default select"
+                    [(ngModel)]="currentSkillSet.skillLevel">
+                    <option [value]=0>Fresher</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+
+            <div class="col-md-4 text-center ml-10">
+                <button type="button" class="btn btn-success" (click)="AddSkill()">Add Skill</button>
+            </div>
+            <div class="col-md-4 text-center ml-10">
+                <button type="button" class="btn btn-success" (click)="SaveSkills()">Save Skills</button>
+            </div>
+
+            <div class="container mt-4">
+                <table class="table">
+                    <tr>
+                        <th class="text-center">Skill</th>
+                        <th class="text-center">Level</th>
+                        <th class="text-center">Delete</th>
+                    </tr>
+                    <tr *ngFor="let d of skillLevel; let i = index">
+                        <td class="text-center">{{ getSkillNameName(d.skillSetId) }}</td>
+                        <td class="text-center">{{ d.skillLevel }}</td>
+                        <td class="text-center">
+                            <button class="btn text-top mt-0" (click)="deleteskill(i)">
+                                <span class="font-weight-bold">Delete</span>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+
+
+
+        <div class="col-md-4 text-center ml-10">
+            <input type="file" #file placeholder="Choose file" (change)="upload(file.files, true)"
+                style="display:none;">
+            <button type="button" class="btn btn-success" (click)="file.click()">Upload your
+                resume</button>
+
+            <button class="btn btn-primary" (click)="skipStep()">
+                <span class="font-weight-bold">Skip this step</span>
+            </button>
+        </div>
+        <div class="col-md-6 col-xs-12 col-sm-12x ">
+            <div class="container-fluid">
+                <input type="file" #file1 placeholder="Choose file" (change)="upload(file1.files,false)"
+                    style="display:none;">
+                <button type="button" class="btn btn-success" (click)="file1.click()">Upload your
+                    Photo</button>
+
+                <button class="btn btn-primary" (click)="skipStep()">
+                    <span class="font-weight-bold">Done</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

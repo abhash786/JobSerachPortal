@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="row py-5 mt-4 align-items-center main-content">
+        <!-- For Demo Purpose -->
+        <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
+            <img src="https://res.cloudinary.com/mhmd/image/upload/v1569543678/form_d9sh6m.svg" alt=""
+                class="img-fluid mb-3 d-none d-md-block">
+            <h1>Create an Account</h1>
+            <p class="font-italic text-muted mb-0">Create an account with R-Manjusha.</p>
+            <p class="font-italic text-muted">Facing issue with Registration. Need Help...
+            </p>
+            <p class="font-italic text-muted">call us on <b>6392298077</b></p>
+        </div>
+
+        <!-- Registeration Form -->
+        <div class="col-md-7 col-lg-6 ml-auto">
+            <div class="input-group col-lg-12 mb-4">
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input name="options" [(ngModel)]="options" type="radio" [value]="true" [checked]="options" />
+                        Register
+                        as Individual
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input name="options" [(ngModel)]="options" type="radio" [value]="false" [checked]="!options" />
+                        Register
+                        as Corporate
+                    </label>
+                </div>
+            </div>
+
+
+            <!-- Register as Corporate -->
+            <app-employer-registration *ngIf="!options"></app-employer-registration>
+
+
+            <!-- Register as Individual -->
+            <app-seeker-registration *ngIf="options"></app-seeker-registration>
+
+
+            <!-- Submit Button -->
+            <div class="form-group col-lg-12 mx-auto mb-0">
+                <button class="btn btn-primary btn-block py-2" (click)="onSubmit()">
+                    <span class="font-weight-bold">Create your account</span>
+                </button>
+            </div>
+
+            <!-- Divider Text -->
+            <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+                <div class="border-bottom w-100 ml-5"></div>
+                <span class="px-2 small text-muted font-weight-bold text-muted">OR</span>
+                <div class="border-bottom w-100 mr-5"></div>
+            </div>
+
+            <!-- Already Registered -->
+            <div class="text-center w-100">
+                <p class="text-muted font-weight-bold">Already Registered? <a routerLink="/login"
+                        class="text-primary ml-2">Login</a></p>
+            </div>
+
+        </div>
+    </div>
+</div>

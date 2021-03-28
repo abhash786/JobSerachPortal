@@ -1,0 +1,20 @@
+<table class="ml-0">
+    <tr>
+        <td>
+            <app-emp-home-left-menu (viewChanged)="NavigateView($event)"></app-emp-home-left-menu>
+
+        </td>
+
+        <td>
+            <main id="main">
+                <app-emp-home-description *ngIf="isAboutContact"></app-emp-home-description>
+                <app-search-candidates *ngIf="isSearchCandidate"></app-search-candidates>
+                <app-new-job *ngIf="isNewJob"></app-new-job>
+                <app-view-posted-jobs *ngIf="isViewPostedJob" (editJobEvt)="editJob($event)"
+                    (viewJobEvt)="viewJob($event)"></app-view-posted-jobs>
+                <app-job-viewer *ngIf="isViewJob"></app-job-viewer>
+                <app-update-employer-profile *ngIf="isUpdating"></app-update-employer-profile>
+            </main>
+        </td>
+    </tr>
+</table>

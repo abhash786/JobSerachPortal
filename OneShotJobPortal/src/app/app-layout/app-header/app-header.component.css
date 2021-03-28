@@ -1,0 +1,19 @@
+.site-header
+{
+  background-color:  #270d0d;;
+}
+
+img {
+  float: left;
+  width: 50px;
+  height: 40px;
+}
+
+
+.ml-auto {
+  margin-right: 0 !important;
+}
+.navbar-toggleable-md .navbar-collapse {         
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;  
+} 

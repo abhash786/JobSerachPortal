@@ -1,0 +1,154 @@
+<div class="row">
+    <!-- First Name -->
+    <div class="input-group col-lg-12 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-user text-muted"></i>
+            </span>
+        </div>
+        <input type="text" name="firstname" placeholder="First Name" [(ngModel)]="seekerInfo.firstName"
+            class="form-control bg-white   border-md">
+    </div>
+
+    <!-- middle Name -->
+    <div class="input-group col-lg-12 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-user text-muted"></i>
+            </span>
+        </div>
+        <input id="lastName" type="text" name="lastname" placeholder="middle Name" [(ngModel)]="seekerInfo.middleName"
+            class="form-control bg-white   border-md">
+    </div>
+
+    <!-- Last Name -->
+    <div class="input-group col-lg-12 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-user text-muted"></i>
+            </span>
+        </div>
+        <input id="lastName" type="text" name="lastname" placeholder="Last Name" [(ngModel)]="seekerInfo.lastName"
+            class="form-control bg-white   border-md">
+    </div>
+
+    <!-- Email Address -->
+    <div class="input-group col-lg-12 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-envelope text-muted"></i>
+            </span>
+        </div>
+        <input id="email" type="email" name="email" placeholder="Email Address" [(ngModel)]="seekerInfo.email"
+            class="form-control bg-white   border-md">
+    </div>
+
+    <!-- Phone Number -->
+    <div class="input-group col-lg-12 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-phone-square text-muted"></i>
+            </span>
+        </div>
+        <input type="tel" name="phone" placeholder="Phone Number" [(ngModel)]="seekerInfo.contactNum"
+            class="form-control bg-white border-md   pl-3">
+    </div>
+    <!-- Aadhar Number -->
+    <div class="input-group col-lg-12 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-address-card"></i>
+            </span>
+        </div>
+        <input id="aadharNumber" type="number" name="Aadhar" placeholder="Aadhar Number"
+            [(ngModel)]="seekerInfo.aadhaar" required class="form-control bg-white border-md   pl-3">
+    </div>
+    <!-- DOB -->
+    <div class="input-group col-lg-6 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-calendar-alt"></i>
+            </span>
+        </div>
+        <input id="dob" type="text" name="dob" placeholder="Date of Birth" onfocus="(this.type='date')"
+            [(ngModel)]="seekerInfo.dob" onblur="(this.type='text')" class="form-control bg-white   border-md">
+    </div>
+    <!-- Seeker type -->
+    <div class="input-group col-lg-6 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-calendar-alt"></i>
+            </span>
+        </div>
+        <select class="form-control bg-white border-md   pl-3 text-muted" aria-label="Default select"
+            [(ngModel)]="seekerInfo.skrTypeId">
+            <option value="0" [selected]=true>Registration Type</option>
+            <option *ngFor="let type of cache.SeekerTypes" [value]="type.skrTypeId">
+                {{type.skrTypeDesc}}
+            </option>
+        </select>
+    </div>
+    <!-- Perferred location -->
+    <div class="input-group col-lg-6 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-map-marker"></i>
+            </span>
+        </div>
+        <select class="form-control bg-white border-md   pl-3 text-muted" aria-label="Default select"
+            [(ngModel)]="seekerInfo.jobLocationPref">
+            <option value="0">Job location</option>
+            <option *ngFor="let loc of cache.LocationMasters" [value]="loc.locationId">
+                {{loc.city}}
+            </option>
+        </select>
+    </div>
+    <!-- gender Details -->
+    <div class="input-group col-lg-6 mb-4 text-muted">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-genderless"></i>
+            </span>
+        </div>
+        <select class="form-control bg-white border-md   pl-3 text-muted" aria-label="Default select"
+            [(ngModel)]="seekerInfo.gender">
+            <option value="0">Gender</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="T">Prefer not to disclose</option>
+        </select>
+    </div>
+
+    <!-- Communication Address -->
+    <div class="input-group col-lg-12 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-address-book text-muted"></i>
+            </span>
+        </div>
+        <input type="text" name="phone" placeholder="Communication Address" [(ngModel)]="seekerInfo.commAdd"
+            class="form-control bg-white border-md   pl-3">
+    </div>
+
+    <!-- Password -->
+    <div class="input-group col-lg-12 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-lock text-muted"></i>
+            </span>
+        </div>
+        <input id="password" type="password" name="password" placeholder="Password" [(ngModel)]="seekerInfo.password"
+            class="form-control bg-white   border-md">
+    </div>
+
+    <!-- Password Confirmation -->
+    <div class="input-group col-lg-12 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-lock text-muted"></i>
+            </span>
+        </div>
+        <input id="passwordConfirmation" type="password" name="passwordConfirmation" [(ngModel)]="confirmPassword"
+            placeholder="Confirm Password" class="form-control bg-white   border-md">
+    </div>
+</div>

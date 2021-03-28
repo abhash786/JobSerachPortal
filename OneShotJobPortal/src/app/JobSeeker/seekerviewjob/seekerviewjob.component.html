@@ -1,0 +1,56 @@
+<div class="col-md-8 order-md-1">
+    <h4 class="mb-3">Job Details</h4>
+    <hr class="mb-4">
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <label class="mr-5"> <b>Job Type:</b> &nbsp;</label>
+            <label class="mr-5"> {{getJobType(job.jobPostTypeId)}} </label>
+        </div>
+
+        <div class="col-md-12 mb-3">
+            <label class="mr-5"> <b>Job Location:</b> &nbsp;</label>
+            <label class="mr-5"> {{getJobLocation(job.jobPostTypeId)}} </label>
+        </div>
+    </div>
+
+    <hr class="mb-4">
+
+    <div class="row">
+        <label class="col-md-6 mb-3 mr-5"> <b>Required Skill Set:&nbsp; </b></label>
+    </div>
+    <div class="row">
+
+        <div class="col-md-4">
+            <label for="country"><b>Primary: </b>&nbsp;</label>
+            <label for="country"> {{job.jobPrimarySkill}} </label>
+            <br />
+            <label for="state"><b>Secondary:</b> &nbsp;</label>
+            <label for="state"> {{job.jobSecondarySkill}} </label>
+        </div>
+    </div>
+
+    <hr class="mb-4">
+    <div class="row">
+        <label class="col-md-4 mb-3 mr-5"> <b>Required Experience:</b>&nbsp; {{job.minExp}} Years - {{job.maxExp}}
+            Years</label>
+    </div>
+
+    <hr class="mb-4">
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <label for="zip"><b> Job Title:&nbsp;</b> {{job.jobTitle}}</label>
+        </div>
+    </div>
+
+    <hr class="mb-4">
+    <div class="row">
+        <label class="col-md-6 mb-3 mr-5"> <b> Job Description:&nbsp;</b> </label>
+    </div>
+    <div class="row">
+        <p class="m-4">
+            {{job.jobDescription}}</p>
+    </div>
+
+    <hr class="mb-4">
+    <button class="btn btn-primary btn-lg btn-block" (click)="apply()">Apply Job</button>
+</div>

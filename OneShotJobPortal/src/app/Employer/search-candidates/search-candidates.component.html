@@ -1,0 +1,115 @@
+<section class="bg-home">
+    <div class="bg-overlay"></div>
+    <div class="home-center">
+        <div class="home-desc-center">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-9">
+                        <div class="home-title text-center text-white">
+                            <h5 class="small-title text-uppercase f-17 text-white-50 mb-4">Discover R-Manjush Today</h5>
+                            <h1 class="mb-4">Find your New Job Easiest Way With R-Manjush</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="home-form-position">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="home-registration-form p-4 mb-3">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="registration-form-box">
+                                            <i class="fa fa-briefcase"></i>
+                                            <input type="text" id="exampleInputName1" style="height: 100%;
+                                                width:180px;" class="form-control registration-input-box"
+                                                placeholder="skill, keybords..." [(ngModel)]="searchInput.keyword">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                        <select id="select-country" class="form-control registration-input-box" style="height: 100%; 
+                                            width:180px;" placeholder="Select Location..."
+                                            [(ngModel)]="searchInput.location">
+                                            <option value="0" selected>Select Location</option>
+                                            <option *ngFor="let loc of cache.LocationMasters" [value]="loc.locationId">
+                                                {{loc.city}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                        <select required id="select-category"
+                                            class="form-control registration-input-box" style="height: 100%;
+                                                    width:180px;" placeholder="Select Category"
+                                            [(ngModel)]="searchInput.category">
+                                            <option value="0" selected>Select Category</option>
+                                            <option *ngFor="let t of cache.BusinessStreams"
+                                                [value]="t.businessStreamId">
+                                                {{t.businessStreamName}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group col-lg-3 mb-2">
+                                        <div class="registration-form-box">
+                                            <input type="submit" id="submit" name="send" style="height: 100%;
+                                                width:180px;" class="submitBnt btn btn-custom btn-block" value="Submit"
+                                                (click)="searchCandidates()">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-white-50 mb-0"><span class="text-white">keywords :</span> Web designer, UI/UX
+                                designer, Graphic designer, Developer, PHP, Call center...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Divider Text -->
+<div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+    <div class="border-bottom w-100 ml-5"></div>
+    <span class="px-2 small text-muted font-weight-bold text-muted"></span>
+    <div class="border-bottom w-100 mr-5"></div>
+</div>
+
+<div class="input-group col-lg-6 mb-4">
+    {{message}}
+</div>
+
+<div class="row m-5" *ngFor="let s of seekers; let i = index">
+    <div class="col-md-12 col-lg-12 col-xs-12 padding-none shadow p-3 mb-5 bg-white rounded">
+        <div class="card-text text-truncate ml-5 float-left" style="color: red;">
+            {{s.firstName}} {{s.middleName}} {{s.lastName}}
+        </div>
+        <div class="text-ago float-right"> <img src={{s.seekerImage}} class="card-img-top" alt="..."
+                style="height: 50px; width:50px;">
+        </div>
+        <br />
+        <br />
+        <div class="row card-text text-truncate ml-5" style="max-width: 600px;">
+            <h5 class="card-title text-truncate">{{s.cvHeadLine}}</h5>
+        </div>
+        <br />
+        <div class="row card-text text-muted ml-5 ">
+            <i class='fas fa-graduation-cap'><b>&nbsp;Education: </b>{{educationData(s.educationDetailSkrs) }}</i>
+        </div>
+        <br />
+        <div class="row card-text text-muted ml-5 ">
+            <i class='fa fa-cogs'><b>&nbsp;Skills: </b>{{getSkills(s.seekersSkillsSetSkrs) }} </i>
+        </div>
+        <br />
+        <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+            <div class="border-bottom w-100 ml-5"></div>
+            <span class="px-2 small text-muted font-weight-bold text-muted"></span>
+            <div class="border-bottom w-100 mr-5"></div>
+        </div>
+        <div class="row card-text text-muted text-truncate ml-5 ">
+            <i class='fa fa-location-arrow'>&nbsp;{{getLocation(s.jobLocationPref) }} </i>
+            <i class='fa fa-lock ml-5'>&nbsp;<b>Experience: </b>{{calculateExp(s.experienceDetailSkrs )}}
+                Years </i>
+            <p class="card-text ml-5"> <a href={{s.resumeCv}} target="_blank">Download Resume</a></p>
+            <p class="card-text ml-5"> <a (click)="viewProfile(i)" style="color: blue;">View full Profile</a></p>
+        </div>
+
+    </div>
+</div>
