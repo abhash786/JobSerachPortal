@@ -1,5 +1,5 @@
 <!-- ======= Header ======= -->
-<header id="header" class="navbar-dark bg-dark">
+<header id="header" class="navbar-dark bg-dark overflow-auto">
     <div class="d-flex flex-column">
 
         <div class="profile">
@@ -33,7 +33,7 @@
                         aria-expanded="false" aria-controls="collapseExample"><i class="fab fa-user"></i>
                         <span>Update</span></a></li>
 
-                <div class="collapse" id="collapseExample">
+                <div class="collapse overflow-auto" style="max-height: 300px;" id="collapseExample">
                     <li><a class="nav-link" (click)="NavigateView('isUpdateProfile')" *ngIf="displayMenu"><i
                                 class="fab fa-user"></i>
                             <span> - Profile info</span></a></li>
@@ -46,6 +46,13 @@
                     <li><a class="nav-link" (click)="NavigateView('isUpload')" *ngIf="displayMenu"><i
                                 class="fab fa-user"></i>
                             <span> - Skills Level</span></a></li>
+                    <li>
+                        <input type="file" #file1 placeholder="Choose file" (change)="upload(file1.files,false)"
+                            style="display:none;">
+                        <a class="nav-link" *ngIf="displayMenu" (click)="file1.click()"><i class="fab fa-user"></i>
+                            <span> - Upload new
+                                Photo</span></a>
+                    </li>
 
                     <li>
                         <input type="file" #file placeholder="Choose file" (change)="upload(file.files, true)"
@@ -55,13 +62,7 @@
                                 resume</span></a>
                     </li>
 
-                    <li>
-                        <input type="file" #file1 placeholder="Choose file" (change)="upload(file1.files,false)"
-                            style="display:none;">
-                        <a class="nav-link" *ngIf="displayMenu" (click)="file1.click()"><i class="fab fa-user"></i>
-                            <span> - Upload new
-                                Photo</span></a>
-                    </li>
+
                 </div>
 
 

@@ -28,7 +28,7 @@
     background: #2eafec;
     transition: background 0.2s ease-in-out;
   }
-  
+  ul, li,a { margin: 0; padding: 0; }
   /*--------------------------------------------------------------
   # Header
   --------------------------------------------------------------*/
@@ -700,7 +700,7 @@
     display: inline-block;
     background: #333;
     color: #fff;
-    line-height: 1;
+    line-height: 0.5;
     padding: 8px 0;
     border-radius: 50%;
     text-align: center;
