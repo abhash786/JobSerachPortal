@@ -42,6 +42,60 @@
 
 
 
+    <!-- DOB -->
+    <div class="input-group col-lg-4 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-calendar-alt"></i>
+            </span>
+        </div>
+        <input id="dob" type="text" name="dob" placeholder="Date of Birth" onfocus="(this.type='date')"
+            [(ngModel)]="seekerInfo.dob" onblur="(this.type='text')" class="form-control bg-white   border-md">
+    </div>
+    <!-- Seeker type -->
+    
+    <!-- Perferred location -->
+    <div class="input-group col-lg-4 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-map-marker"></i>
+            </span>
+        </div>
+        <select class="form-control bg-white border-md   pl-3 text-muted" aria-label="Default select"
+            [(ngModel)]="seekerInfo.jobLocationPref">
+            <option value="0">Job location</option>
+            <option *ngFor="let loc of cache.LocationMasters" [value]="loc.locationId">
+                {{loc.city}}
+            </option>
+        </select>
+    </div>
+    <!-- gender Details -->
+    <div class="input-group col-lg-4 mb-4 text-muted">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-genderless"></i>
+            </span>
+        </div>
+        <select class="form-control bg-white border-md   pl-3 text-muted" aria-label="Default select"
+            [(ngModel)]="seekerInfo.gender">
+            <option value="0">Gender</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="T">Prefer not to disclose</option>
+        </select>
+    </div>
+
+    <!-- Communication Address -->
+    <div class="input-group col-lg-12 mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                <i class="fa fa-address-book text-muted"></i>
+            </span>
+        </div>
+        <input type="text" name="phone" placeholder="Communication Address" [(ngModel)]="seekerInfo.commAdd"
+            class="form-control bg-white border-md   pl-3">
+    </div>
+
 
 
         <!-- Permanent Address -->

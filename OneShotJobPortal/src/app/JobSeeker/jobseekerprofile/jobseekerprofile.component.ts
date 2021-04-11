@@ -47,27 +47,26 @@ export class JobseekerprofileComponent implements OnInit {
   constructor(public cache: DataCache, private dataService: DataService, private toastr: ToastrService,
     private router: Router, private changeDetector: ChangeDetectorRef) {
     const navigation = this.router.getCurrentNavigation();
-    if (navigation && navigation.extras.state)
-    {
+    if (navigation && navigation.extras.state) {
       var user = navigation.extras.state as SeekerProfile;
-      if (user)
-      {
+      if (user) {
         this.seekerInfo = user;
         this.isNavigation = true;
       }
     }
-    else
+    else {
       this.seekerInfo = this.cache.seekerInfo;
-
-
+      if (this.seekerInfo) {
+        this.dataService.refreshSeekerInfo();
+      }
+    }
   }
 
   ngOnInit(): void {
     this.changeDetector.detectChanges();
     this.seekerleftMenu.updateSeekerInfo(this.seekerInfo);
     this.seekerDescription.updateSeekerInfo(this.seekerInfo);
-    if (this.isNavigation)
-    {
+    if (this.isNavigation) {
       this.displayMenu = false;
       this.seekerleftMenu.disableMenu();
     }
@@ -102,19 +101,24 @@ export class JobseekerprofileComponent implements OnInit {
 
   public upload = (files: any, isResume: boolean) => {
     if (isResume)
-      this.fileUpload(files, this.seekerInfo.skrId, true)?.subscribe(() => this.toastr.success("Profile Resume uploaded successfully."), error =>
+      this.fileUpload(files, this.seekerInfo.skrId, true)?.subscribe(() => {
+        this.dataService.refreshSeekerInfo();
+        this.toastr.success("Profile Resume uploaded successfully.");
+      }, error =>
         this.toastr.error("an error while uploading profile Resume."));
     else
-      this.fileUpload(files, this.seekerInfo.skrId, false)?.subscribe(() => this.toastr.success("Profile Photo uploaded successfully."), error =>
+      this.fileUpload(files, this.seekerInfo.skrId, false)?.subscribe(() => {
+        this.dataService.refreshSeekerInfo();
+        this.toastr.success("Profile Photo uploaded successfully.");
+      }, error =>
         this.toastr.error("an error while uploading profile photo."));
   }
 
   public fileUpload(files: any, userid: number, isResume: boolean) {
-    if (files.length === 0)
-    {
+    if (files.length === 0) {
       return;
     }
-    let fileToUpload = <File> files[0];
+    let fileToUpload = <File>files[0];
     const formData = new FormData();
     var filename = userid.toString();
     var ext = fileToUpload.name.split('.').pop();

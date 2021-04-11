@@ -15,10 +15,17 @@ export class ViewPostedJobsComponent implements OnInit {
   postedJobs: JobPost[] = [];
   @Output() editJobEvt = new EventEmitter<JobPost>();
   @Output() viewJobEvt = new EventEmitter<JobPost>();
+  message: string = "";
 
   constructor(public cache: DataCache, private dataService: DataService, private toastr: ToastrService) {
     this.employerInfo = this.cache.employerInfo;
-    this.dataService.getAllJobsByCompanyId(this.employerInfo.empId).subscribe(data => this.postedJobs = data, err => this.toastr.error(err));
+    this.dataService.getAllJobsByCompanyId(this.employerInfo.empId).subscribe(data => {
+      this.postedJobs = data;
+      if (this.postedJobs?.length > 0)
+        this.message = "Total " + this.postedJobs.length + " Jobs found.";
+      else
+        this.message = "No Posted Job Found...";
+    }, err => this.toastr.error(err));
   }
   ngOnInit(): void {
   }

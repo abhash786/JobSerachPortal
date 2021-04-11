@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 import { ValidationHelper } from 'src/app/HelperClasses/ValidationHelper';
 import { SeekerProfile } from 'src/app/Models/SeekerProfile';
 import { DataCache } from 'src/app/Services/DataCache';
@@ -11,14 +12,13 @@ import { DataService } from 'src/app/Services/DataService';
   styleUrls: ['./seeker-registration.component.css']
 })
 export class SeekerRegistrationComponent implements OnInit {
-
+  
   public seekerInfo: SeekerProfile = {} as SeekerProfile;
   confirmPassword: string = ""
 
   constructor(private toastr: ToastrService, public cache: DataCache, private service: DataService) {
     this.seekerInfo.skrTypeId = 0;
-    this.seekerInfo.jobLocationPref = 0;
-    this.seekerInfo.gender = "0";
+  
     this.seekerInfo.skrProfileVisibility = true;
   }
 
@@ -51,12 +51,6 @@ export class SeekerRegistrationComponent implements OnInit {
     if (!this.seekerInfo.lastName)
     {
       this.toastr.error('Last Name is required!');
-      return false;
-    }
-
-    if (!this.seekerInfo.dob)
-    {
-      this.toastr.error('Date of Birth is required!');
       return false;
     }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 import { DataCache } from 'src/app/Services/DataCache';
 import { DataService } from 'src/app/Services/DataService';
 import { EmployerRegistrationComponent } from '../employer-registration/employer-registration.component';
@@ -14,7 +15,7 @@ import { SeekerRegistrationComponent } from '../seeker-registration/seeker-regis
 export class SingupComponentComponent implements OnInit {
 
   options = true;
-
+  busy: Subscription;
   @ViewChild(SeekerRegistrationComponent) seekerComponent: SeekerRegistrationComponent;
   @ViewChild(EmployerRegistrationComponent) employerComponent: EmployerRegistrationComponent;
 
@@ -35,35 +36,22 @@ export class SingupComponentComponent implements OnInit {
     if (!this.seekerComponent.validate())
       return;
 
-    this.dataService.createSeekerProfile(this.seekerComponent.seekerInfo).subscribe(data => {
+      this.busy = this.dataService.createSeekerProfile(this.seekerComponent.seekerInfo).subscribe(data => {
       this.toastr.success("user created successfully. Redirectin to additional info page...");
       this.cache.login(data.user, data.token);
-
-      const navigationExtras: NavigationExtras = {
-        state: this.seekerComponent.seekerInfo
-      };
-      this.router.navigate(['/seekeraddtionaldetails'], navigationExtras);
+      this.router.navigate(['/seekeraddtionaldetails']);
     }, error => this.toastr.error(error));
-    /*  this.seekerComponent.seekerInfo.skrTypeId = 1;
- 
-       this.dataService.createIndividualUser(this.seekerComponent.seekerInfo).subscribe(x => {
-         this.toastr.success("User registered successfully!");
-         this.router.navigate(['/individualuseraddtionaldetails']);
-       }, error => this.toastr.error(error));
-       this.toastr.success("We are registering you with us. Please wait..."); */
   }
 
   registerEmployer() {
     if (!this.employerComponent.validate())
       return;
 
-    this.dataService.createCorporateUser(this.employerComponent.employerInfo).subscribe(data => {
+      this.busy = this.dataService.createCorporateUser(this.employerComponent.employerInfo).subscribe(data => {
       this.toastr.success("Employer registered successfully.")
       this.cache.corporateLogin(data.user, data.token);
-      const navigationExtras: NavigationExtras = {
-        state: this.cache.employerInfo
-      };
-      this.router.navigate(['/employeraddtionaldetails'], navigationExtras);
+    
+      this.router.navigate(['/employeraddtionaldetails']);
     }, err => this.toastr.error(err));
 
   }

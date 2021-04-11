@@ -51,6 +51,7 @@ import { UpdateSkillSetsComponent } from './JobSeeker/update-skill-sets/update-s
 import { UpdateEmployerProfileComponent } from './Employer/update-employer-profile/update-employer-profile.component';
 import { SeekerviewjobComponent } from './JobSeeker/seekerviewjob/seekerviewjob.component';
 import { VersionCheckService } from './Services/version-check.service';
+import { NgBusyModule } from 'ng-busy';
 
 @NgModule({
   declarations: [
@@ -100,7 +101,8 @@ import { VersionCheckService } from './Services/version-check.service';
     ToastrModule.forRoot(), // ToastrModule added
     HttpClientModule,
     ReactiveFormsModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([]),
+    NgBusyModule
   ],
   providers: [DataService, DataCache, AuthGuardService, VersionCheckService, SeekerAuthGuardService, {
     provide: HTTP_INTERCEPTORS,

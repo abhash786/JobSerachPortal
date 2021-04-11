@@ -25,26 +25,12 @@ export class SeekerAdditionalDetailsComponent implements OnInit {
   public resumeFileContent: string = "";
 
   constructor(public cache: DataCache, private toastr: ToastrService, private router: Router, private dataService: DataService) {
-    const navigation = this.router.getCurrentNavigation();
-    if (!navigation)
-    {
-      this.toastr.error("you cannot view Additional Info page. Redirected to signup page...");
-      this.router.navigate(['/signup']);
-    }
-    else
-    {
-      var user = navigation.extras.state as SeekerProfile;
-      if (user)
-      {
-        this.seekerInfo = user;
-      }
-      else
-      {
-        this.seekerInfo = this.cache.seekerInfo;
-      }
+    this.seekerInfo = this.cache.seekerInfo;
+    this.seekerInfo.jobLocationPref = 0;
+    this.seekerInfo.gender = "0";
+    this.seekerInfo.skrProfileVisibility = true;
+    this.seekerInfo.dob = "";
 
-      this.seekerInfo.skrProfileVisibility = true;
-    }
   }
 
   ngOnInit(): void {
@@ -52,18 +38,15 @@ export class SeekerAdditionalDetailsComponent implements OnInit {
   }
 
   public onSubmit() {
-    if (this.seekerInfo.altContactNum)
-    {
-      if (!ValidationHelper.validatePhoneNumber(this.seekerInfo.altContactNum))
-      {
+    if (this.seekerInfo.altContactNum) {
+      if (!ValidationHelper.validatePhoneNumber(this.seekerInfo.altContactNum)) {
         this.toastr.error('Kindly provide correct alternate phone number!');
         return false;
       }
     }
     this.dataService.UpdateSeekerInfo(this.seekerInfo).subscribe(data => {
       this.cache.seekerInfo = data;
-      if (this.educationComponent.educationData.length > 0)
-      {
+      if (this.educationComponent.educationData.length > 0) {
         this.educationComponent.educationData.forEach((value) => {
           value.skrId = this.seekerInfo.skrId;
           value.skrCode = this.seekerInfo.skrCode;
@@ -72,8 +55,7 @@ export class SeekerAdditionalDetailsComponent implements OnInit {
         }, error => this.toastr.error("an error while updating Education details... " + error));
       }
 
-      if (this.experienceComponent.experienceData.length > 0)
-      {
+      if (this.experienceComponent.experienceData.length > 0) {
         this.experienceComponent.experienceData.forEach((value) => {
           value.skrId = this.seekerInfo.skrId;
           value.skrCode = this.seekerInfo.skrCode;

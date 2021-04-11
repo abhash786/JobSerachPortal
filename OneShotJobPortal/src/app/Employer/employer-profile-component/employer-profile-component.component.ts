@@ -39,8 +39,7 @@ export class EmployerProfileComponentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-
+    this.dataService.refreshEmployerInfo();
   }
 
   public NavigateView(name: string) {

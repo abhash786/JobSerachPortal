@@ -62,6 +62,10 @@ export class DataCache {
             return {} as EmployerInfo;
     }
 
+    set employerInfo(info: EmployerInfo) {
+        localStorage.setItem("employerInfo", JSON.stringify(info));
+    }
+
     public login(user: SeekerProfile, token: string) {
         this.logout(false);
         localStorage.setItem("isAuthenticated", "true");

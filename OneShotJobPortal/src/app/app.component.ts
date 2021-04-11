@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.versionCheckService.initVersionCheck(environment.versionCheckURL);
+    //this.versionCheckService.initVersionCheck(environment.versionCheckURL);
   }
   title = 'OneShotJobPortal';
   @HostListener("window:onbeforeunload", ["$event"])

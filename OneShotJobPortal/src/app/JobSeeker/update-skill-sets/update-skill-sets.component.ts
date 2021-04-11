@@ -53,9 +53,8 @@ export class UpdateSkillSetsComponent implements OnInit {
   }
 
   public SaveSkills() {
-    if (this.skillLevel.length > 0)
-    {
-      this.dataService.deleteSkillLevel(this.seekerInfo.skrId).subscribe(() => {
+    this.dataService.deleteSkillLevel(this.seekerInfo.skrId).subscribe(() => {
+      if (this.skillLevel.length > 0) {
         this.skillLevel.forEach((value) => {
           value.skrId = this.cache.seekerInfo.skrId;
           value.skrCode = this.cache.seekerInfo.skrCode;
@@ -63,9 +62,12 @@ export class UpdateSkillSetsComponent implements OnInit {
 
           this.dataService.addSkillLevel(value).subscribe(data => this.toastr.success("Skill: " + skillname + " Successfully Updated"),
             err => this.toastr.error("Error: " + skillname + " : " + err));
-        })
-      }, err => this.toastr.error(err));
+        });
+      }
+      else{
+        this.toastr.success("Skillsets updated successfully.");
+      }
 
-    }
+    }, err => this.toastr.error(err));
   }
 }

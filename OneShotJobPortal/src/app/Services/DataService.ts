@@ -149,6 +149,16 @@ export class DataService {
             );
     }
 
+    public refreshSeekerInfo() {
+        return this.httpClient.get<SeekerProfile>(environment.apiUrl + "SeekerProfiles/" + this.cache.seekerInfo.skrId).subscribe(x => this.cache.seekerInfo = x,
+            err => this.handleError(err));
+    }
+
+    public refreshEmployerInfo() {
+        return this.httpClient.get<EmployerInfo>(environment.apiUrl + "EmployerInfo/" + this.cache.employerInfo.empId).subscribe(x => this.cache.employerInfo = x,
+            err => this.handleError(err));
+    }
+
     public CreateJobActivity(activity: JobPostActivity) {
         return this.httpClient.post(environment.apiUrl + "JobPostActivities", activity)
             .pipe(

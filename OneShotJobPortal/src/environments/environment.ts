@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'https://localhost:44398/api/',
-  //apiUrl: 'https://rmanjush-rest-api.azurewebsites.net/api/',
+  //apiUrl: 'http://www.r-manjusha.com:801/api/',
   versionCheckURL: 'https://localhost:4200/version.json'
 };
 

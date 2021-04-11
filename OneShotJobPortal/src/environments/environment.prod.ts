@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://rmanjush-rest-api.azurewebsites.net/api/',
-  versionCheckURL: 'https://r-manjusha.azurewebsites.net/version.json'
+  apiUrl: 'http://www.r-manjusha.com:801/api/',
+  versionCheckURL: 'http://www.r-manjusha.com:801/version.json'
 };
